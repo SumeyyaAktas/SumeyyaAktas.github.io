@@ -9,7 +9,7 @@ body
 {
     background-color: #fff;
     color: #000;
-    font-family: "Noto Serif JP", serif;
+    font-family: "DotGothic16", sans-serif;
     line-height: 1.6;
     font-size: 18px;
     padding: 40px 20px;
@@ -95,7 +95,7 @@ hr
 footer 
 {
     margin-top: -10px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #555;
     text-align: center;
     border-top: 1px solid #000;
