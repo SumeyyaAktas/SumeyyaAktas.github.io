@@ -4,78 +4,742 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumeyya Aktas</title>
-    <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: "Geist Pixel", sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            overflow: hidden;
+        }
+
+        .section-overlay {
+            transform: translate3d(0, 100vh, 0);
+            visibility: hidden;
+            pointer-events: none;
+            will-change: transform;
+            transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                        visibility 0s linear 0.9s;
+        }
+
+        .section-overlay.active {
+            transform: translate3d(0, 0, 0);
+            visibility: visible;
+            pointer-events: auto;
+            transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1),
+                        visibility 0s;
+        }
+
+        .section-overlay.covered {
+            transform: translate3d(0, -14vh, 0);
+            pointer-events: none;
+        }
+
+        .section-overlay.top {
+            z-index: 41;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .section-overlay,
+            .section-overlay.active {
+                transition-duration: 0.01s;
+            }
+        }
+
+        .nav-link {
+            color: #888888;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active-link {
+            color: #000000;
+        }
+
+        .header-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #back-btn {
+            transition: opacity 0.3s ease;
+        }
+
+        #back-btn svg {
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        #back-btn:hover svg,
+        #back-btn:focus-visible svg {
+            transform: translateX(-4px);
+        }
+
+        .contact-link .link-arrow {
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .contact-link:hover .link-arrow,
+        .contact-link:focus-visible .link-arrow {
+            transform: translate(4px, -4px);
+        }
+
+        #ascii-eye {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            margin: 0;
+            font-family: "IBM Plex Mono", monospace;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0;
+            white-space: pre;
+            color: #000000;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+    </style>
 </head>
-<body>
+<body class="w-screen h-screen relative">
 
-    <div class="wrapper">
-        <header>
-            <h1 class="logo">Sumeyya Aktas</h1>
-            <nav class="top-nav">
-                <a href="#about">About</a> /
-                <a href="#experience">Experience</a> /
-                <a href="#projects">Projects</a> /
-                <a href="#blog">Blog</a> /
-                <a href="#contact">Contact</a>
-            </nav>
-        </header>
-
-        <main>
-            <section id="about">
-                <h2>About</h2>
-                <p>I am currently a Computer Science student at the University of Florida, aspired to pursue low-level programming with a focus on kernel and device driver development.</p>
-            </section>
-
-            <hr>
-
-            <section id="experience">
-                <h2>Experience</h2>
-                <p>(July 2023 - June 2025) — Software Developer @ Hair & Grooming Studio</p>
-                <p>(June 2024 - August 2024) — Junior Researcher @ New York University</p>
-            </section>
-
-            <hr>
-
-            <section id="projects">
-                <h2>Projects</h2>
-                <ul>
-                    <li><a href="https://github.com/suak7/Artorias" target="_blank">Custom 32-bit x86 Bootloader with EHCI (USB 2.0) Driver Support</a>: I built a 32-bit x86 bootloader and freestanding kernel that provides VGA output, serial debugging, PCI enumeration, and MMIO as a platform for low-level driver development. I also implemented a USB 2.0 EHCI driver to enumerate devices via control transfers and descriptor parsing.</li>
-                    <li><a href="https://github.com/suak7/Radagon" target="_blank">Custom 64-bit x86 Bootloader with AHCI (SATA) Storage Driver Support</a>: I implemented a bare-metal AHCI (SATA) storage driver in C, enabling direct disk access through PCI discovery and MMIO. The driver initializes controllers and ports, uses DMA-based command execution with aligned command structures, and performs sector-level read/write operations with serial-based debugging and error handling.</li>
-                </ul>
-            </section>
-
-            <hr>
-
-            <section id="blog">
-                <h2>Blog</h2>
-                <p>You can find all of my blog posts on my Medium page <a href="https://medium.com/@sumeyyaaktas" target="_blank">@sumeyyaaktas</a>.
-                <p>
-                <ul>
-                    <li>2026/02/24 - <em><a href = "https://medium.com/@sumeyyaaktas/writing-a-tiny-rtos-without-hardware-43fa7fc7c31f" target="_blank">Writing a Tiny RTOS Without Hardware</a></em></li>
-                    <li>2026/02/20 - <em><a href = "https://medium.com/@sumeyyaaktas/how-i-wrote-a-usb-2-0-driver-from-scratch-ehci-explained-5136dd63bffe" target="_blank">How I Wrote a USB 2.0 Driver From Scratch (EHCI Explained)</a></em></li>
-                    <li>2026/01/10 - <em><a href="https://medium.com/@sumeyyaaktas/how-virtual-memory-becomes-physical-2b37ef9237e8" target="_blank">How Virtual Memory Becomes Physical</a></em></li>
-                    <li>2025/12/19 - <em><a href="https://medium.com/@sumeyyaaktas/part-1-writing-a-custom-x86-bootloader-with-ehci-support-from-scratch-43cb7a5b736d?postPublishedType=repub" target="_blank">Writing a 32-bit x86 Bootloader From Scratch</a></em></li>
-                </ul>
-                </p>
-            </section>
-
-            <hr>
-
-            <section id="contact">
-                <h2>Contact</h2>
-                <p>All of my projects are public on <a href="https://github.com/suak7" target="_blank">GitHub</a>, so feel free to check them out, and connect with me on <a href="https://www.linkedin.com/in/sumeyya-aktas/" target="_blank">LinkedIn</a>.</p>
-            </section>
-        </main>
-
-        <footer>
-            <p>© 2026 Sumeyya Aktas</p>
-        </footer>
+    <div id="main-header" class="fixed top-8 left-8 sm:top-12 sm:left-12 z-50 transition-opacity duration-300">
+        <div class="text-[#999999] text-[10px] sm:text-[18px] font-medium tracking-widest uppercase mb-1">
+            Firmware Engineer
+        </div>
+        <div class="text-black text-xl sm:text-5xl font-bold tracking-tight uppercase">
+            Sumeyya Aktas
+        </div>
     </div>
 
+    <button id="back-btn" class="fixed top-8 left-8 sm:top-12 sm:left-12 z-[60] w-10 h-10 text-black flex items-center justify-center opacity-0 pointer-events-none" aria-label="Go back">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-9" viewBox="0 0 9 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+            <path d="M3 0h1v1h-1zM2 1h1v1h-1zM1 2h1v1h-1zM0 3h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM7 3h1v1h-1zM8 3h1v1h-1zM1 4h1v1h-1zM2 5h1v1h-1zM3 6h1v1h-1z" />
+        </svg>
+    </button>
+
+    <nav class="fixed top-8 right-8 sm:top-12 sm:left-auto sm:right-12 z-[60] flex flex-col items-end gap-2 text-sm font-medium tracking-wide">
+        <a href="#" class="nav-link" data-target="home">HOME</a>
+        <a href="#" class="nav-link" data-target="about">ABOUT</a>
+        <a href="#" class="nav-link" data-target="experience">EXPERIENCE</a>
+        <a href="#" class="nav-link" data-target="projects">PROJECTS</a>
+        <a href="https://medium.com/@sumeyyaaktas" target="_blank" rel="noopener noreferrer" class="nav-link">BLOG</a>
+        <a href="#" class="nav-link" data-target="contact">CONTACT</a>
+    </nav>
+
+    <pre id="ascii-eye" role="img" aria-label="A large eye made of text characters that follows your cursor"></pre>
+
+    <div id="home-meta" class="fixed bottom-8 left-8 sm:bottom-12 sm:left-12 z-30 transition-opacity duration-300 max-w-[calc(100vw-4rem)] md:max-w-xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
+
+            <div class="pt-3 border-t border-gray-300">
+                <div class="text-[#999999] text-[10px] sm:text-xs font-medium tracking-widest uppercase mb-1">
+                    BASE
+                </div>
+                <div class="text-black text-xs sm:text-sm tracking-wide uppercase">
+                    ISTANBUL, TÜRKİYE
+                </div>
+                <div id="live-clock" class="text-black text-xs sm:text-sm mt-1" style="font-family: 'Geist Pixel', sans-serif;">
+                    12:00:00 AM GMT+3
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-gray-300">
+                <div class="text-[#999999] text-[10px] sm:text-xs font-medium tracking-widest uppercase mb-1">
+                    FOCUS
+                </div>
+                <div class="text-black text-xs sm:text-sm tracking-wide uppercase leading-tight">
+                    LOW-LEVEL SYSTEMS / EMBEDDED ARCHITECTURE / KERNEL DEVELOPMENT
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-8 right-8 sm:bottom-12 sm:right-12 z-30 max-w-sm text-right">
+        <p class="text-xs sm:text-sm leading-relaxed italic text-gray-600">
+            Cowards die many times before their deaths; the valiant never taste of death but once.
+        </p>
+    </div>
+
+    <section id="about" class="section-overlay fixed inset-0 bg-white z-40 overflow-y-auto flex flex-col justify-center items-center px-8 py-32 sm:px-24 sm:py-40">
+        <div class="w-full max-w-4xl text-center">
+            <h2 class="text-xs text-gray-400 font-medium tracking-widest uppercase mb-12">About</h2>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-16 tracking-tight">
+                Firmware engineer building low-level systems.
+            </h1>
+
+            <div class="max-w-2xl mx-auto text-left border-t border-gray-200 pt-12">
+                <p class="text-base sm:text-lg leading-relaxed text-gray-700">
+                    I am currently a Computer Science student at the University of Florida with a focus on firmware and low-level systems. I build in C and assembly, with hands-on projects involving operating systems, RTOS development, drivers, interrupts, DMA, and hardware interfaces.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-overlay fixed inset-0 bg-white z-40 overflow-y-auto px-8 py-32 sm:px-24 sm:py-40">
+        <div class="max-w-3xl mx-auto mt-12">
+            <h2 class="text-xs text-gray-400 font-medium tracking-widest uppercase mb-12 text-center">Experience</h2>
+
+            <div class="space-y-16 border-t border-gray-200 pt-8">
+                <div>
+
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-baseline">
+                        <h3 class="text-xl sm:text-2xl font-bold">Software Engineer</h3>
+                        <span class="text-gray-500 text-sm md:text-base mt-2 md:mt-0 uppercase">
+                            Aktas Barbershop – July 2023 to June 2025
+                        </span>
+                    </div>
+
+                    <div class="mt-5">
+                        <p class="text-sm sm:text-base leading-relaxed text-gray-600">
+                            Developed a full-stack appointment booking system using Node.js, PostgreSQL, and Redis caching that cut database query overhead by 40%. Added client-side JavaScript validation to decrease invalid submissions by 30%, while building a Chart.js monitoring dashboard to track system throughput.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-overlay fixed inset-0 bg-white z-40 overflow-y-auto px-8 py-32 sm:px-24 sm:py-40">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-16 tracking-tight">
+                Projects that explore low-level systems, bootloaders, and embedded architecture.
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="aspect-square border border-gray-200 flex flex-col justify-end p-6 hover:border-black transition-colors">
+                    <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">01</span>
+                    <h3 class="font-bold text-base">MangOS: 64-bit x86 Operating System</h3>
+                </div>
+                <div class="aspect-square border border-gray-200 flex flex-col justify-end p-6 hover:border-black transition-colors">
+                    <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">02</span>
+                    <h3 class="font-bold text-base">DoRTOS: Preemptive RTOS for ARM Cortex-M3</h3>
+                </div>
+                <div class="aspect-square border border-gray-200 flex flex-col justify-end p-6 hover:border-black transition-colors">
+                    <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">03</span>
+                    <h3 class="font-bold text-base">Radagon: 64-bit x86 Bootloader & AHCI Driver</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-overlay fixed inset-0 bg-white z-40 overflow-y-auto flex flex-col justify-center items-center px-8 py-32 sm:px-24 sm:py-40">
+        <div class="w-full max-w-4xl text-center">
+            <h2 class="text-xs text-gray-400 font-medium tracking-widest uppercase mb-12">Contact</h2>
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold leading-tight mb-16 tracking-tight">
+                Say Hello.
+            </h1>
+
+            <div class="border-t border-gray-200 pt-12 flex flex-col items-center gap-6">
+                <a href="https://github.com/SumeyyaAktas" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2">
+                    GitHub
+                    <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-4 w-4" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                        <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/sumeyya-aktas/" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2">
+                    LinkedIn
+                    <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-4 w-4" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                        <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                    </svg>
+                </a>
+                <a href="https://medium.com/@sumeyyaaktas" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2">
+                    Medium
+                    <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-4 w-4" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                        <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () =>
+        {
+            const navLinks = document.querySelectorAll('.nav-link[data-target]');
+            const sections = document.querySelectorAll('.section-overlay');
+            const mainHeader = document.getElementById('main-header');
+            const homeMeta = document.getElementById('home-meta');
+            const backBtn = document.getElementById('back-btn');
+            const liveClock = document.getElementById('live-clock');
+
+            const RISE_MS = 300;
+            let currentSection = null;
+            let cleanupTimer = null;
+
+            function updateClock()
+            {
+                const now = new Date();
+
+                const time = now.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true,
+                    timeZone: 'Europe/Istanbul'
+                });
+
+                liveClock.textContent = time + ' GMT+3';
+            }
+
+            function openSection(target)
+            {
+                if (target === currentSection)
+                {
+                    return;
+                }
+
+                const previous = currentSection;
+                currentSection = target;
+
+                if (previous)
+                {
+                    previous.classList.add('covered');
+                    previous.classList.remove('top');
+                }
+
+                target.classList.remove('covered');
+                target.classList.add('top');
+                target.classList.add('active');
+
+                clearTimeout(cleanupTimer);
+                cleanupTimer = setTimeout(function ()
+                {
+                    sections.forEach(function (section)
+                    {
+                        if (section !== currentSection)
+                        {
+                            section.classList.remove('active', 'covered', 'top');
+                        }
+                    });
+                }, RISE_MS + 80);
+            }
+
+            function closeSections()
+            {
+                clearTimeout(cleanupTimer);
+                currentSection = null;
+
+                sections.forEach(function (section)
+                {
+                    section.classList.remove('active', 'covered', 'top');
+                });
+            }
+
+            const closeAllSections = () =>
+            {
+                closeSections();
+
+                navLinks.forEach(link =>
+                {
+                    if (link.getAttribute('data-target') === 'home')
+                    {
+                        link.classList.add('active-link');
+                    }
+                    else
+                    {
+                        link.classList.remove('active-link');
+                    }
+                });
+
+                mainHeader.classList.remove('header-hide');
+                homeMeta.classList.remove('header-hide');
+                backBtn.style.opacity = '0';
+                backBtn.style.pointerEvents = 'none';
+            };
+
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            closeAllSections();
+
+            navLinks.forEach(link =>
+            {
+                link.addEventListener('click', (e) =>
+                {
+                    e.preventDefault();
+
+                    const targetId = link.getAttribute('data-target');
+
+                    if (targetId === 'home')
+                    {
+                        closeAllSections();
+                        return;
+                    }
+
+                    navLinks.forEach(nav => nav.classList.remove('active-link'));
+
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection)
+                    {
+                        openSection(targetSection);
+                        link.classList.add('active-link');
+
+                        mainHeader.classList.add('header-hide');
+                        homeMeta.classList.add('header-hide');
+                        backBtn.style.opacity = '1';
+                        backBtn.style.pointerEvents = 'auto';
+                    }
+                });
+            });
+
+            backBtn.addEventListener('click', () =>
+            {
+                closeAllSections();
+            });
+        });
+    </script>
+
+    <script>
+        (function ()
+        {
+            'use strict';
+
+            const eye = document.getElementById('ascii-eye');
+
+            const COLS   = 112;
+            const ROWS   = 46;
+            const CW     = 0.6;
+            const SHIFT  = -5.5;
+            const HALF_W = 31;
+            const LID_UP = 15;
+            const LID_LO = 11;
+            const IRIS_R = 12;
+            const IRIS_Y = -1.5;
+            const MAX_X  = 15;
+            const MAX_Y  = 5;
+
+            const RAMP = [
+                [' '],
+                ['.', '`', "'"],
+                [',', ':', ';'],
+                ['-', '~', 'i', 'l'],
+                ['+', '=', 'o', 'x'],
+                ['*', 'k', 'd', 'b'],
+                ['O', 'K', 'X', 'Z'],
+                ['#', '%', 'M', 'W'],
+                ['@', '&', 'B', '8']
+            ];
+
+            const noise = new Float32Array(COLS * ROWS);
+            for (let i = 0; i < noise.length; i++)
+            {
+                noise[i] = Math.random();
+            }
+
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            let fontSize = 12;
+
+            let targetX = 0;
+            let targetY = IRIS_Y;
+            let curX = 0;
+            let curY = IRIS_Y;
+            let hasPointer = false;
+
+            let blinkStart = -1;
+            let nextBlink = performance.now() + 2500;
+
+            let lastX = null;
+            let lastY = null;
+            let lastOpen = null;
+
+            function clamp(v, lo, hi)
+            {
+                return Math.max(lo, Math.min(hi, v));
+            }
+
+            function segDist(px, py, ax, ay, bx, by)
+            {
+                const vx = bx - ax;
+                const vy = by - ay;
+                const t = clamp(((px - ax) * vx + (py - ay) * vy) / (vx * vx + vy * vy), 0, 1);
+                const dx = px - (ax + t * vx);
+                const dy = py - (ay + t * vy);
+                return Math.sqrt(dx * dx + dy * dy);
+            }
+
+            function almond(x, halfW)
+            {
+                const k = 1 - (x / halfW) * (x / halfW);
+                return k > 0 ? Math.pow(k, 0.9) : 0;
+            }
+
+            function render(irisX, irisY, open)
+            {
+                const hu = LID_UP * open;
+                const hl = LID_LO * open;
+
+                const lashes = [];
+                for (let lx = -27; lx <= 27.1; lx += 4.5)
+                {
+                    const bx  = lx;
+                    const by  = -hu * almond(lx, HALF_W);
+                    const ang = -Math.PI / 2 + (lx / HALF_W) * 0.95;
+                    const len = 3.5 + 3.5 * (1 - Math.abs(lx) / HALF_W);
+                    lashes.push([bx, by, bx + Math.cos(ang) * len, by + Math.sin(ang) * len]);
+                }
+
+                const squash = 1 - 0.14 * Math.abs(irisX) / MAX_X;
+
+                const lines = [];
+
+                for (let r = 0; r < ROWS; r++)
+                {
+                    const y = (r - ROWS / 2 + 0.5) + SHIFT;
+                    let line = '';
+
+                    for (let c = 0; c < COLS; c++)
+                    {
+                        const idx = r * COLS + c;
+                        const n = noise[idx];
+                        const x = (c - COLS / 2 + 0.5) * CW;
+                        const ax = Math.abs(x);
+
+                        let v = 0;
+                        let inside = false;
+                        const f = ax < HALF_W ? almond(x, HALF_W) : 0;
+                        const top = -hu * f;
+                        const bot = hl * f;
+
+                        if (ax < HALF_W && y > top && y < bot)
+                        {
+                            inside = true;
+                            const dTop = y - top;
+                            const dBot = bot - y;
+
+                            v = 0.03
+                                + 0.5  * Math.exp(-dTop / 3.2)
+                                + 0.3  * Math.exp(-dBot / 2.5)
+                                + 0.35 * Math.exp(-(HALF_W - ax) / 3.5);
+
+                            if (n < 0.09)
+                            {
+                                v += 0.12;
+                            }
+
+                            const dx = (x - irisX) / squash;
+                            const dy = y - irisY;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < IRIS_R)
+                            {
+                                const rr = dist / IRIS_R;
+                                const a = Math.atan2(dy, dx);
+                                const streaks = 0.5 + 0.5 * Math.sin(a * 26 + Math.sin(a * 7) * 2.0);
+
+                                let iv = 0.36 + 0.26 * streaks + 0.22 * rr * rr;
+
+                                if (rr > 0.82)
+                                {
+                                    iv += 0.32;
+                                }
+
+                                if (rr < 0.52 && rr > 0.4)
+                                {
+                                    iv -= 0.12;
+                                }
+
+                                if (rr < 0.4)
+                                {
+                                    iv = 1.0;
+                                }
+
+                                iv += 0.35 * Math.exp(-dTop / 4);
+                                v = Math.min(1, iv);
+
+                                const h1x = x - (irisX - IRIS_R * 0.38);
+                                const h1y = y - (irisY - IRIS_R * 0.36);
+
+                                if (h1x * h1x + h1y * h1y < 3.2)
+                                {
+                                    v = 0;
+                                }
+
+                                const h2x = x - (irisX + IRIS_R * 0.32);
+                                const h2y = y - (irisY + IRIS_R * 0.42);
+
+                                if (h2x * h2x + h2y * h2y < 1.3)
+                                {
+                                    v = 0.1;
+                                }
+                            }
+
+                            if (dTop < 1.5)
+                            {
+                                v = 0.96;
+                            }
+                            else if (dBot < 1.2)
+                            {
+                                v = 0.8;
+                            }
+                        }
+                        else
+                        {
+                            const creaseW = HALF_W * 0.95;
+
+                            if (ax < creaseW && y < top)
+                            {
+                                const creaseY = -(hu * 1.45 * almond(x, creaseW) + 3.5);
+                                const t = y - creaseY;
+
+                                if (Math.abs(t) < 0.75)
+                                {
+                                    v = 0.58;
+                                }
+                                else if (t > 0)
+                                {
+                                    v = 0.03 + 0.22 * Math.exp(-t / 2.8);
+                                }
+                            }
+
+                            const lowW = HALF_W * 0.85;
+
+                            if (ax < lowW && y > bot)
+                            {
+                                const lowY = hl * almond(x, lowW) + 2.8;
+
+                                if (Math.abs(y - lowY) < 0.55)
+                                {
+                                    v = Math.max(v, 0.42);
+                                }
+                            }
+
+                            if (y < top + 0.5)
+                            {
+                                for (let i = 0; i < lashes.length; i++)
+                                {
+                                    const L = lashes[i];
+
+                                    if (segDist(x, y, L[0], L[1], L[2], L[3]) < 0.9)
+                                    {
+                                        v = Math.max(v, 0.82);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        v += (n - 0.5) * 0.07;
+
+                        const level = clamp(Math.floor(v * 9), 0, 8);
+                        const glyphs = RAMP[level];
+                        line += glyphs[Math.floor(n * 997) % glyphs.length];
+                    }
+
+                    lines.push(line);
+                }
+
+                eye.textContent = lines.join('\n');
+            }
+
+            function fit()
+            {
+                fontSize = Math.min(
+                    (window.innerWidth * 0.69) / (COLS * CW),
+                    (window.innerHeight * 0.59) / ROWS
+                );
+
+                eye.style.fontSize = fontSize + 'px';
+            }
+
+            function onPointerMove(e)
+            {
+                hasPointer = true;
+
+                const rect = eye.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2 + (IRIS_Y - SHIFT) * fontSize;
+
+                let nx = clamp((e.clientX - centerX) / (window.innerWidth * 0.45), -1, 1);
+                let ny = clamp((e.clientY - centerY) / (window.innerHeight * 0.45), -1, 1);
+
+                nx = Math.sign(nx) * Math.pow(Math.abs(nx), 0.8);
+                ny = Math.sign(ny) * Math.pow(Math.abs(ny), 0.8);
+
+                targetX = nx * MAX_X;
+                targetY = IRIS_Y + ny * MAX_Y;
+            }
+
+            function getOpen(now)
+            {
+                if (reducedMotion)
+                {
+                    return 1;
+                }
+
+                if (blinkStart < 0)
+                {
+                    if (now < nextBlink)
+                    {
+                        return 1;
+                    }
+
+                    blinkStart = now;
+                }
+
+                const p = (now - blinkStart) / 260;
+
+                if (p >= 1)
+                {
+                    blinkStart = -1;
+                    nextBlink = now + 2500 + Math.random() * 4000;
+                    return 1;
+                }
+
+                return 1 - 0.95 * Math.sin(Math.PI * p);
+            }
+
+            function overlayIsOpen()
+            {
+                return document.querySelector('.section-overlay.active') !== null;
+            }
+
+            function loop(now)
+            {
+                if (!overlayIsOpen())
+                {
+                    if (!hasPointer && !reducedMotion)
+                    {
+                        targetX = Math.sin(now / 1900) * MAX_X * 0.8;
+                        targetY = IRIS_Y + Math.sin(now / 2700 + 1) * MAX_Y * 0.6;
+                    }
+
+                    curX += (targetX - curX) * 0.14;
+                    curY += (targetY - curY) * 0.14;
+
+                    const open = getOpen(now);
+
+                    if (lastX === null
+                        || Math.abs(curX - lastX) > 0.03
+                        || Math.abs(curY - lastY) > 0.03
+                        || Math.abs(open - lastOpen) > 0.005)
+                    {
+                        render(curX, curY, open);
+                        lastX = curX;
+                        lastY = curY;
+                        lastOpen = open;
+                    }
+                }
+
+                requestAnimationFrame(loop);
+            }
+
+            window.addEventListener('pointermove', onPointerMove);
+            window.addEventListener('resize', fit);
+
+            fit();
+            requestAnimationFrame(loop);
+        })();
+    </script>
 </body>
 </html>
