@@ -81,31 +81,16 @@
             transform: translateX(-4px);
         }
 
-        .contact-link .link-arrow {
+        .contact-link .link-arrow,
+        .article-link .link-arrow {
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .contact-link:hover .link-arrow,
-        .contact-link:focus-visible .link-arrow {
+        .contact-link:focus-visible .link-arrow,
+        .article-link:hover .link-arrow,
+        .article-link:focus-visible .link-arrow {
             transform: translate(4px, -4px);
-        }
-
-        #ascii-eye {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            margin: 0;
-            font-family: "IBM Plex Mono", monospace;
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: 0;
-            white-space: pre;
-            color: #000000;
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-select: none;
         }
     </style>
 </head>
@@ -131,11 +116,9 @@
         <a href="#" class="nav-link" data-target="about">ABOUT</a>
         <a href="#" class="nav-link" data-target="experience">EXPERIENCE</a>
         <a href="#" class="nav-link" data-target="projects">PROJECTS</a>
-        <a href="https://medium.com/@sumeyyaaktas" target="_blank" rel="noopener noreferrer" class="nav-link">BLOG</a>
+        <a href="#" class="nav-link" data-target="blog">BLOG</a>
         <a href="#" class="nav-link" data-target="contact">CONTACT</a>
     </nav>
-
-    <pre id="ascii-eye" role="img" aria-label="A large eye made of text characters that follows your cursor"></pre>
 
     <div id="home-meta" class="fixed bottom-8 left-8 sm:bottom-12 sm:left-12 z-30 transition-opacity duration-300 max-w-[calc(100vw-4rem)] md:max-w-xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
@@ -227,6 +210,96 @@
                     <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">03</span>
                     <h3 class="font-bold text-base">Radagon: 64-bit x86 Bootloader & AHCI Driver</h3>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="section-overlay fixed inset-0 bg-white z-40 overflow-y-auto px-8 py-32 sm:px-24 sm:py-40">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-xs text-gray-400 font-medium tracking-widest uppercase mb-12 text-center">
+                Blog
+            </h2>
+
+            <div class="border-t border-gray-200">
+                <article class="py-8 border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold leading-tight">
+                                Writing a 32-bit x86 Bootloader From Scratch
+                            </h3>
+                            <p class="text-sm text-gray-500 mt-2">
+                                December 20, 2025
+                            </p>
+                        </div>
+
+                        <a href="https://medium.com/@sumeyyaaktas/part-1-writing-a-custom-x86-bootloader-with-ehci-support-from-scratch-43cb7a5b736d" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
+                            View Article
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="py-8 border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold leading-tight">
+                                How Virtual Memory Becomes Physical
+                            </h3>
+                            <p class="text-sm text-gray-500 mt-2">
+                                January 10, 2026
+                            </p>
+                        </div>
+
+                        <a href="https://medium.com/@sumeyyaaktas/how-virtual-memory-becomes-physical-2b37ef9237e8" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
+                            View Article
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="py-8 border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold leading-tight">
+                                How I Wrote a USB 2.0 Driver From Scratch (EHCI Explained)
+                            </h3>
+                            <p class="text-sm text-gray-500 mt-2">
+                                February 21, 2026
+                            </p>
+                        </div>
+
+                        <a href="https://medium.com/@sumeyyaaktas/how-i-wrote-a-usb-2-0-driver-from-scratch-ehci-explained-5136dd63bffe" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
+                            View Article
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="py-8 border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold leading-tight">
+                                Writing an RTOS Without Hardware
+                            </h3>
+                            <p class="text-sm text-gray-500 mt-2">
+                                February 24, 2026
+                            </p>
+                        </div>
+
+                        <a href="https://medium.com/@sumeyyaaktas/writing-a-tiny-rtos-without-hardware-43fa7fc7c31f" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
+                            View Article
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -399,347 +472,5 @@
         });
     </script>
 
-    <script>
-        (function ()
-        {
-            'use strict';
-
-            const eye = document.getElementById('ascii-eye');
-
-            const COLS   = 112;
-            const ROWS   = 46;
-            const CW     = 0.6;
-            const SHIFT  = -5.5;
-            const HALF_W = 31;
-            const LID_UP = 15;
-            const LID_LO = 11;
-            const IRIS_R = 12;
-            const IRIS_Y = -1.5;
-            const MAX_X  = 15;
-            const MAX_Y  = 5;
-
-            const RAMP = [
-                [' '],
-                ['.', '`', "'"],
-                [',', ':', ';'],
-                ['-', '~', 'i', 'l'],
-                ['+', '=', 'o', 'x'],
-                ['*', 'k', 'd', 'b'],
-                ['O', 'K', 'X', 'Z'],
-                ['#', '%', 'M', 'W'],
-                ['@', '&', 'B', '8']
-            ];
-
-            const noise = new Float32Array(COLS * ROWS);
-            for (let i = 0; i < noise.length; i++)
-            {
-                noise[i] = Math.random();
-            }
-
-            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            let fontSize = 12;
-
-            let targetX = 0;
-            let targetY = IRIS_Y;
-            let curX = 0;
-            let curY = IRIS_Y;
-            let hasPointer = false;
-
-            let blinkStart = -1;
-            let nextBlink = performance.now() + 2500;
-
-            let lastX = null;
-            let lastY = null;
-            let lastOpen = null;
-
-            function clamp(v, lo, hi)
-            {
-                return Math.max(lo, Math.min(hi, v));
-            }
-
-            function segDist(px, py, ax, ay, bx, by)
-            {
-                const vx = bx - ax;
-                const vy = by - ay;
-                const t = clamp(((px - ax) * vx + (py - ay) * vy) / (vx * vx + vy * vy), 0, 1);
-                const dx = px - (ax + t * vx);
-                const dy = py - (ay + t * vy);
-                return Math.sqrt(dx * dx + dy * dy);
-            }
-
-            function almond(x, halfW)
-            {
-                const k = 1 - (x / halfW) * (x / halfW);
-                return k > 0 ? Math.pow(k, 0.9) : 0;
-            }
-
-            function render(irisX, irisY, open)
-            {
-                const hu = LID_UP * open;
-                const hl = LID_LO * open;
-
-                const lashes = [];
-                for (let lx = -27; lx <= 27.1; lx += 4.5)
-                {
-                    const bx  = lx;
-                    const by  = -hu * almond(lx, HALF_W);
-                    const ang = -Math.PI / 2 + (lx / HALF_W) * 0.95;
-                    const len = 3.5 + 3.5 * (1 - Math.abs(lx) / HALF_W);
-                    lashes.push([bx, by, bx + Math.cos(ang) * len, by + Math.sin(ang) * len]);
-                }
-
-                const squash = 1 - 0.14 * Math.abs(irisX) / MAX_X;
-
-                const lines = [];
-
-                for (let r = 0; r < ROWS; r++)
-                {
-                    const y = (r - ROWS / 2 + 0.5) + SHIFT;
-                    let line = '';
-
-                    for (let c = 0; c < COLS; c++)
-                    {
-                        const idx = r * COLS + c;
-                        const n = noise[idx];
-                        const x = (c - COLS / 2 + 0.5) * CW;
-                        const ax = Math.abs(x);
-
-                        let v = 0;
-                        let inside = false;
-                        const f = ax < HALF_W ? almond(x, HALF_W) : 0;
-                        const top = -hu * f;
-                        const bot = hl * f;
-
-                        if (ax < HALF_W && y > top && y < bot)
-                        {
-                            inside = true;
-                            const dTop = y - top;
-                            const dBot = bot - y;
-
-                            v = 0.03
-                                + 0.5  * Math.exp(-dTop / 3.2)
-                                + 0.3  * Math.exp(-dBot / 2.5)
-                                + 0.35 * Math.exp(-(HALF_W - ax) / 3.5);
-
-                            if (n < 0.09)
-                            {
-                                v += 0.12;
-                            }
-
-                            const dx = (x - irisX) / squash;
-                            const dy = y - irisY;
-                            const dist = Math.sqrt(dx * dx + dy * dy);
-
-                            if (dist < IRIS_R)
-                            {
-                                const rr = dist / IRIS_R;
-                                const a = Math.atan2(dy, dx);
-                                const streaks = 0.5 + 0.5 * Math.sin(a * 26 + Math.sin(a * 7) * 2.0);
-
-                                let iv = 0.36 + 0.26 * streaks + 0.22 * rr * rr;
-
-                                if (rr > 0.82)
-                                {
-                                    iv += 0.32;
-                                }
-
-                                if (rr < 0.52 && rr > 0.4)
-                                {
-                                    iv -= 0.12;
-                                }
-
-                                if (rr < 0.4)
-                                {
-                                    iv = 1.0;
-                                }
-
-                                iv += 0.35 * Math.exp(-dTop / 4);
-                                v = Math.min(1, iv);
-
-                                const h1x = x - (irisX - IRIS_R * 0.38);
-                                const h1y = y - (irisY - IRIS_R * 0.36);
-
-                                if (h1x * h1x + h1y * h1y < 3.2)
-                                {
-                                    v = 0;
-                                }
-
-                                const h2x = x - (irisX + IRIS_R * 0.32);
-                                const h2y = y - (irisY + IRIS_R * 0.42);
-
-                                if (h2x * h2x + h2y * h2y < 1.3)
-                                {
-                                    v = 0.1;
-                                }
-                            }
-
-                            if (dTop < 1.5)
-                            {
-                                v = 0.96;
-                            }
-                            else if (dBot < 1.2)
-                            {
-                                v = 0.8;
-                            }
-                        }
-                        else
-                        {
-                            const creaseW = HALF_W * 0.95;
-
-                            if (ax < creaseW && y < top)
-                            {
-                                const creaseY = -(hu * 1.45 * almond(x, creaseW) + 3.5);
-                                const t = y - creaseY;
-
-                                if (Math.abs(t) < 0.75)
-                                {
-                                    v = 0.58;
-                                }
-                                else if (t > 0)
-                                {
-                                    v = 0.03 + 0.22 * Math.exp(-t / 2.8);
-                                }
-                            }
-
-                            const lowW = HALF_W * 0.85;
-
-                            if (ax < lowW && y > bot)
-                            {
-                                const lowY = hl * almond(x, lowW) + 2.8;
-
-                                if (Math.abs(y - lowY) < 0.55)
-                                {
-                                    v = Math.max(v, 0.42);
-                                }
-                            }
-
-                            if (y < top + 0.5)
-                            {
-                                for (let i = 0; i < lashes.length; i++)
-                                {
-                                    const L = lashes[i];
-
-                                    if (segDist(x, y, L[0], L[1], L[2], L[3]) < 0.9)
-                                    {
-                                        v = Math.max(v, 0.82);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-
-                        v += (n - 0.5) * 0.07;
-
-                        const level = clamp(Math.floor(v * 9), 0, 8);
-                        const glyphs = RAMP[level];
-                        line += glyphs[Math.floor(n * 997) % glyphs.length];
-                    }
-
-                    lines.push(line);
-                }
-
-                eye.textContent = lines.join('\n');
-            }
-
-            function fit()
-            {
-                fontSize = Math.min(
-                    (window.innerWidth * 0.69) / (COLS * CW),
-                    (window.innerHeight * 0.59) / ROWS
-                );
-
-                eye.style.fontSize = fontSize + 'px';
-            }
-
-            function onPointerMove(e)
-            {
-                hasPointer = true;
-
-                const rect = eye.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2 + (IRIS_Y - SHIFT) * fontSize;
-
-                let nx = clamp((e.clientX - centerX) / (window.innerWidth * 0.45), -1, 1);
-                let ny = clamp((e.clientY - centerY) / (window.innerHeight * 0.45), -1, 1);
-
-                nx = Math.sign(nx) * Math.pow(Math.abs(nx), 0.8);
-                ny = Math.sign(ny) * Math.pow(Math.abs(ny), 0.8);
-
-                targetX = nx * MAX_X;
-                targetY = IRIS_Y + ny * MAX_Y;
-            }
-
-            function getOpen(now)
-            {
-                if (reducedMotion)
-                {
-                    return 1;
-                }
-
-                if (blinkStart < 0)
-                {
-                    if (now < nextBlink)
-                    {
-                        return 1;
-                    }
-
-                    blinkStart = now;
-                }
-
-                const p = (now - blinkStart) / 260;
-
-                if (p >= 1)
-                {
-                    blinkStart = -1;
-                    nextBlink = now + 2500 + Math.random() * 4000;
-                    return 1;
-                }
-
-                return 1 - 0.95 * Math.sin(Math.PI * p);
-            }
-
-            function overlayIsOpen()
-            {
-                return document.querySelector('.section-overlay.active') !== null;
-            }
-
-            function loop(now)
-            {
-                if (!overlayIsOpen())
-                {
-                    if (!hasPointer && !reducedMotion)
-                    {
-                        targetX = Math.sin(now / 1900) * MAX_X * 0.8;
-                        targetY = IRIS_Y + Math.sin(now / 2700 + 1) * MAX_Y * 0.6;
-                    }
-
-                    curX += (targetX - curX) * 0.14;
-                    curY += (targetY - curY) * 0.14;
-
-                    const open = getOpen(now);
-
-                    if (lastX === null
-                        || Math.abs(curX - lastX) > 0.03
-                        || Math.abs(curY - lastY) > 0.03
-                        || Math.abs(open - lastOpen) > 0.005)
-                    {
-                        render(curX, curY, open);
-                        lastX = curX;
-                        lastY = curY;
-                        lastOpen = open;
-                    }
-                }
-
-                requestAnimationFrame(loop);
-            }
-
-            window.addEventListener('pointermove', onPointerMove);
-            window.addEventListener('resize', fit);
-
-            fit();
-            requestAnimationFrame(loop);
-        })();
-    </script>
 </body>
 </html>
