@@ -82,14 +82,17 @@
         }
 
         .contact-link .link-arrow,
-        .article-link .link-arrow {
+        .article-link .link-arrow,
+        .project-link .link-arrow {
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .contact-link:hover .link-arrow,
         .contact-link:focus-visible .link-arrow,
         .article-link:hover .link-arrow,
-        .article-link:focus-visible .link-arrow {
+        .article-link:focus-visible .link-arrow,
+        .project-link:hover .link-arrow,
+        .project-link:focus-visible .link-arrow {
             transform: translate(4px, -4px);
         }
     </style>
@@ -140,15 +143,15 @@
                     FOCUS
                 </div>
                 <div class="text-black text-xs sm:text-sm tracking-wide uppercase leading-tight">
-                    LOW-LEVEL SYSTEMS / EMBEDDED ARCHITECTURE / KERNEL DEVELOPMENT
+                    LOW-LEVEL SYSTEMS / EMBEDDED ARCHITECTURE / KERNEL AND DRIVER DEVELOPMENT
                 </div>
             </div>
         </div>
     </div>
 
     <div class="fixed bottom-8 right-8 sm:bottom-12 sm:right-12 z-30 max-w-sm text-right">
-        <p class="text-xs sm:text-sm leading-relaxed italic text-gray-600">
-            Cowards die many times before their deaths; the valiant never taste of death but once.
+        <p class="text-xs sm:text-sm leading-relaxed italic">
+            COWARDS DIE MANY TIMES BEFORE THEIR DEATHS; THE VALIANT NEVER TASTE OF DEATH BUT ONCE.
         </p>
     </div>
 
@@ -156,12 +159,12 @@
         <div class="w-full max-w-4xl text-center">
             <h2 class="text-xs text-gray-400 font-medium tracking-widest uppercase mb-12">About</h2>
             <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-16 tracking-tight">
-                Firmware engineer building low-level systems.
+                To C, or Not to C, That Is the Question.
             </h1>
 
             <div class="max-w-2xl mx-auto text-left border-t border-gray-200 pt-12">
                 <p class="text-base sm:text-lg leading-relaxed text-gray-700">
-                    I am currently a Computer Science student at the University of Florida with a focus on firmware and low-level systems. I build in C and assembly, with hands-on projects involving operating systems, RTOS development, drivers, interrupts, DMA, and hardware interfaces.
+                    I’m a Computer Science student at the University of Florida focused on firmware and low-level systems. I work primarily in C and assembly, building operating systems, bootloaders, RTOS components, and hardware drivers from scratch. Apart from programming, I love to read dystopian and horror novels and usually watch dark comedy shows in my free time. I also dabble in creating my own ambient music.
                 </p>
             </div>
         </div>
@@ -173,7 +176,6 @@
 
             <div class="space-y-16 border-t border-gray-200 pt-8">
                 <div>
-
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-baseline">
                         <h3 class="text-xl sm:text-2xl font-bold">Software Engineer</h3>
                         <span class="text-gray-500 text-sm md:text-base mt-2 md:mt-0 uppercase">
@@ -193,23 +195,85 @@
 
     <section id="projects" class="section-overlay fixed inset-0 bg-white z-40 overflow-y-auto px-8 py-32 sm:px-24 sm:py-40">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-16 tracking-tight">
-                Projects that explore low-level systems, bootloaders, and embedded architecture.
+            <h2 class="text-xs text-gray-400 font-medium tracking-widest uppercase mb-12 text-center">Projects</h2>
+            <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-16 tracking-tight text-center">
+                Things I Built Along the Way.
             </h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="aspect-square border border-gray-200 flex flex-col justify-end p-6 hover:border-black transition-colors">
-                    <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">01</span>
-                    <h3 class="font-bold text-base">MangOS: 64-bit x86 Operating System</h3>
+
+                <div class="border border-gray-200 bg-white hover:border-black transition-colors overflow-hidden">
+                    <div class="h-48 bg-gray-100 overflow-hidden">
+                        <img src="assets/mangos-terminal.png" alt="MangOS 64-bit x86 operating system" class="w-full h-full object-[90%_center]">
+                    </div>
+
+                    <div class="p-6 bg-white">
+                        <span class="text-xs text-gray-400 uppercase tracking-widest mb-2 block">01</span>
+                        <h3 class="font-bold text-base">MangOS: 64-bit x86 Operating System</h3>
+
+                        <a href="https://github.com/DylanBT928/mangOS" target="_blank" rel="noopener noreferrer" class="project-link text-sm font-medium flex items-center gap-2 mt-4">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="aspect-square border border-gray-200 flex flex-col justify-end p-6 hover:border-black transition-colors">
-                    <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">02</span>
-                    <h3 class="font-bold text-base">DoRTOS: Preemptive RTOS for ARM Cortex-M3</h3>
+
+                <div class="border border-gray-200 bg-white hover:border-black transition-colors overflow-hidden">
+                    <div class="h-48 bg-gray-100 overflow-hidden">
+                        <img src="assets/dortos-terminal.png" alt="DoRTOS preemptive RTOS for ARM Cortex-M3" class="w-full h-full object-[90%_center]">
+                    </div>
+
+                    <div class="p-6 bg-white">
+                        <span class="text-xs text-gray-400 uppercase tracking-widest mb-2 block">02</span>
+                        <h3 class="font-bold text-base">DoRTOS: Preemptive RTOS for ARM Cortex-M3</h3>
+
+                        <a href="https://github.com/SumeyyaAktas/DoRTOS" target="_blank" rel="noopener noreferrer" class="project-link text-sm font-medium flex items-center gap-2 mt-4">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="aspect-square border border-gray-200 flex flex-col justify-end p-6 hover:border-black transition-colors">
-                    <span class="text-xs text-gray-400 uppercase tracking-widest mb-1">03</span>
-                    <h3 class="font-bold text-base">Radagon: 64-bit x86 Bootloader & AHCI Driver</h3>
+
+                <div class="border border-gray-200 bg-white hover:border-black transition-colors overflow-hidden">
+                    <div class="h-48 bg-gray-100 overflow-hidden">
+                        <img src="assets/artorias-terminal.png" alt="Artorias 32-bit x86 bootloader and EHCI driver" class="w-full h-full object-[90%_center]">
+                    </div>
+
+                    <div class="p-6 bg-white">
+                        <span class="text-xs text-gray-400 uppercase tracking-widest mb-2 block">03</span>
+                        <h3 class="font-bold text-base">Artorias: 32-bit x86 Bootloader &amp; EHCI Driver</h3>
+
+                        <a href="https://github.com/SumeyyaAktas/Artorias" target="_blank" rel="noopener noreferrer" class="project-link text-sm font-medium flex items-center gap-2 mt-4">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+
+                <div class="border border-gray-200 bg-white hover:border-black transition-colors overflow-hidden">
+                    <div class="h-48 bg-gray-100 overflow-hidden">
+                        <img src="assets/radagon-terminal.png" alt="Radagon 64-bit x86 bootloader and AHCI driver" class="w-full h-full object-[90%_center]">
+                    </div>
+
+                    <div class="p-6 bg-white">
+                        <span class="text-xs text-gray-400 uppercase tracking-widest mb-2 block">04</span>
+                        <h3 class="font-bold text-base">Radagon: 64-bit x86 Bootloader &amp; AHCI Driver</h3>
+
+                        <a href="https://github.com/SumeyyaAktas/Radagon" target="_blank" rel="noopener noreferrer" class="project-link text-sm font-medium flex items-center gap-2 mt-4">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -225,36 +289,16 @@
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
                         <div>
                             <h3 class="text-xl sm:text-2xl font-bold leading-tight">
-                                Writing a 32-bit x86 Bootloader From Scratch
+                                Writing an RTOS Without Hardware
                             </h3>
                             <p class="text-sm text-gray-500 mt-2">
-                                December 20, 2025
+                                February 24, 2026
                             </p>
                         </div>
 
-                        <a href="https://medium.com/@sumeyyaaktas/part-1-writing-a-custom-x86-bootloader-with-ehci-support-from-scratch-43cb7a5b736d" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
+                        <a href="https://medium.com/@sumeyyaaktas/writing-a-tiny-rtos-without-hardware-43fa7fc7c31f" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
                             View Article
-                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
-                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="py-8 border-b border-gray-200">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-                        <div>
-                            <h3 class="text-xl sm:text-2xl font-bold leading-tight">
-                                How Virtual Memory Becomes Physical
-                            </h3>
-                            <p class="text-sm text-gray-500 mt-2">
-                                January 10, 2026
-                            </p>
-                        </div>
-
-                        <a href="https://medium.com/@sumeyyaaktas/how-virtual-memory-becomes-physical-2b37ef9237e8" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
-                            View Article
-                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
                                 <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
                             </svg>
                         </a>
@@ -274,7 +318,7 @@
 
                         <a href="https://medium.com/@sumeyyaaktas/how-i-wrote-a-usb-2-0-driver-from-scratch-ehci-explained-5136dd63bffe" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
                             View Article
-                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
                                 <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
                             </svg>
                         </a>
@@ -285,16 +329,36 @@
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
                         <div>
                             <h3 class="text-xl sm:text-2xl font-bold leading-tight">
-                                Writing an RTOS Without Hardware
+                                How Virtual Memory Becomes Physical
                             </h3>
                             <p class="text-sm text-gray-500 mt-2">
-                                February 24, 2026
+                                January 10, 2026
                             </p>
                         </div>
 
-                        <a href="https://medium.com/@sumeyyaaktas/writing-a-tiny-rtos-without-hardware-43fa7fc7c31f" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
+                        <a href="https://medium.com/@sumeyyaaktas/how-virtual-memory-becomes-physical-2b37ef9237e8" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
                             View Article
-                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-3 w-3" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="py-8 border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold leading-tight">
+                                Writing a 32-bit x86 Bootloader From Scratch
+                            </h3>
+                            <p class="text-sm text-gray-500 mt-2">
+                                December 20, 2025
+                            </p>
+                        </div>
+
+                        <a href="https://medium.com/@sumeyyaaktas/part-1-writing-a-custom-x86-bootloader-with-ehci-support-from-scratch-43cb7a5b736d" target="_blank" rel="noopener noreferrer" class="article-link shrink-0 text-sm font-medium flex items-center gap-2">
+                            View Article
+                            <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-2.5 w-2.5" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
                                 <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
                             </svg>
                         </a>
@@ -312,19 +376,19 @@
             </h1>
 
             <div class="border-t border-gray-200 pt-12 flex flex-col items-center gap-6">
-                <a href="https://github.com/SumeyyaAktas" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2">
+                <a href="https://github.com/SumeyyaAktas" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2.5">
                     GitHub
                     <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-4 w-4" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
                         <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/sumeyya-aktas/" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2">
+                <a href="https://www.linkedin.com/in/sumeyya-aktas/" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2.5">
                     LinkedIn
                     <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-4 w-4" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
                         <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
                     </svg>
                 </a>
-                <a href="https://medium.com/@sumeyyaaktas" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2">
+                <a href="https://medium.com/@sumeyyaaktas" target="_blank" rel="noopener noreferrer" class="contact-link text-xl sm:text-2xl font-bold flex items-center gap-2.5">
                     Medium
                     <svg xmlns="http://www.w3.org/2000/svg" class="link-arrow h-4 w-4" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
                         <path d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM6 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z" />
